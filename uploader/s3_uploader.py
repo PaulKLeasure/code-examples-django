@@ -11,7 +11,7 @@ from pprint import pprint
 #from urllib.request import Request, urlopen
 #from urllib.error import URLError
 #print("========== EC2 Role Capture =========")
-#ec2_role_url = "http://169.254.169.254/latest/meta-data/iam/security-credentials/EC2_S3_Access_ivault-media"
+#ec2_role_url = "http://< some IP address >/latest/meta-data/iam/security-credentials/EC2_S3_Access_ivault-media"
 #ec2_role_response = urlopen(ec2_role_url)
 #print(" ============ ec2_role_response ============ ")
 #ec2_role_respBytes = ec2_role_response.read()
