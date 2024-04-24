@@ -1,0 +1,8 @@
+
+
+<span v-if="upload_in_progress" class="upload-ajax-spinner"> {{ upload_progress_indicator }}</span>
+
+
+
+
+<span v-html="upload_bar_anima"></span>

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>UPLOAD ASSET</h2>
+  {% if devOut %}<p>{% print devOut %}</p>{% endif %}
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Upload</button>
+  </form>
+
+{% if url %}<p>URL: {{ url }}</p>{% endif %}
+{% if unique_filename %}<p>FILENAME: {{ unique_filename }}</p>{% endif %}
+
+{% endblock %}

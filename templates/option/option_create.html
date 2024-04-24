@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if devOut %}<p>{% print devOut %}</p>{% endif %}
+<form method='POST'> {% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="save">
+</form>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if devOut %}<p>{% print devOut %}</p>{% endif %}
+
+<header class="d-flex flex-column flex-md-row align-items-md-center p-5 bg-light">
+<div class="pt-md-3 pb-md-4">
+  <h1 class="bd-title mt-0">Upload Configurator</h1>
+  <p class="bd-lead"> </p><div class="d-flex flex-column flex-sm-row">
+</div>
+
+<div class="card">
+  <div class="card-header">Select your files to upload.</div>
+  <div class="card-body">
+    <h5 class="card-title"> </h5>
+    <p class="card-text"> </p>
+    <form method="post" enctype="multipart/form-data">
+      <div class="form-group mb-2">
+        {% csrf_token %}
+        <div class="col-sm-10">
+            <input id="multi-uploader" type="file" name="upload_files" multiple/>
+         <button type="submit" class="btn btn-primary mb-2 multi-uploader">Upload</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+    
+
+
+
+</header>
+{% endblock %}

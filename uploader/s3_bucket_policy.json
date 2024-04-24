@@ -1,0 +1,21 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicRead",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::ivault-api-media/*"
+        },
+        {
+            "Sid": "ProgammaticAdminAccess",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::071316641278:user/pkl_ivaults3_01"
+            },
+            "Action": "*",
+            "Resource": "arn:aws:s3:::ivault-api-media/*"
+        }
+    ]
+}

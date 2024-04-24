@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+
+  
+    .container{
+      max-width: 500px;
+      margin-bottom:50px;
+    }
+  
+
+  .btn{
+      display: block;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+  }
+
+  h2{
+      text-align:center;
+    }
+
+  p{
+    text-align:center;
+  }
+
+  .topMargin {
+      margin-top:20px;
+  }
+
+  .lightWeightGrayText {
+      font-weight: 300;
+      color: #888;
+  }
+
+  ul{
+    list-style-type:none;
+    padding-left:0;
+  }
+
+  ul li{
+    color:#ff0000;
+  }
+  
+
+</style>
+<section>
+<div class="container">
+  <h2 class="text-primary topMargin">Sign up</h2>
+  <p class="lightWeightGrayText">Register an account</p>
+  <form method="post">
+      {% csrf_token %}
+        {% comment %} {% print form %} {% endcomment %}
+        {% comment %}  {{ form.as_p }} {% endcomment %}
+        {% comment %} 
+        //////////////////////////////////////
+            Load PKL Extras module custom filters/tags 
+            like this:
+                {% load pklextras_tags %}
+            So you can add arbitrary css classes like this:
+                {{ field | addclass:"form-control" }}
+        /////////////////////////////////////
+        {% endcomment %}
+        {% load pklextras_tags %}
+
+                {{ form.non_field_errors }}
+                
+                  {% for hidden_field in form.hidden_fields %}
+                    {{ hidden_field.errors }}
+                    {{ hidden_field }}
+                  {% endfor %}
+              
+                  {% for field in form.visible_fields %}                    
+                    <div class="form-group">
+                        {% if field.widget_type == 'password'  %} 
+                          <lablel><strong>Password</strong></lablel>
+                          {{ field | addclass:"form-control" }}
+                          {{ field.errors }}
+                        {% else %}
+                          <lablel><strong>{{ field.label }}</strong></lablel>
+                          {{ field | addclass:"form-control" }}
+                          {{ field.errors }}
+                        {%endif %}
+                    </div>
+                  {% endfor %}
+
+      <button class="btn btn-primary " type="submit">Sign up</button>
+
+  </form>
+</div>
+</section>
+{% endblock %}

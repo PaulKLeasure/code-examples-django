@@ -1,0 +1,53 @@
+// VUE for UPLOADER app
+
+const appUploader2 = new Vue({
+    delimiters: ["[[","]]"],
+    el: '#app-uploader2',
+    data: {
+        test01: 'VueJS is working!',
+        isOpen : true
+    },
+    methods: {
+        toggleAccordian : function(event){
+            // Adds class .is-closed to upload-{id}
+            // Based on clicked header-{id}
+            const uploadId = event.target.id.replace('header-','upload-');
+            const uploadElement = document.getElementById(uploadId);
+            if(uploadElement){
+                uploadElement.classList.toggle("is-closed");
+            }
+        },
+        fetchOptionGroupValues: function(){
+        this.optionValues ="Searching ...";
+        axios.get('http://127.0.0.1:8000/ajax/opt-grp-values/?optionGroupName=Art%20File&asset_id=76664')
+             .then(function(response){
+                this.test01 = response.data;
+                console.log('AXIOS TEST RESPONSE',typeof(response.data) );
+                var respDat = JSON.parse(JSON.stringify(response.data));
+                console.log('AXIOS TEST RESPONSE  respDat ',respDat );
+                respDat.forEach((item)=>{
+                    console.log('AXIOS TEST RESPONSE[]', item.definition );
+                });
+
+                console.log('AXIOS TEST RESPONSE',response.data );
+             })
+        }
+    },
+    //computed: {
+    //    accordianClasses: function(event){
+    //        let elem_id = event.target.id;
+    //        console.log('target', target);
+//
+    //        //if(event.target){
+    //        //    console.log('classList',event.target.classList);
+    //        //    const element = document.getElementById(event.target.id);
+    //        //    if(element.classList.contains('message-header');){
+    //        //       element.classList.toggle("is-closed");
+    //        //    }
+    //        //}
+    //        //return {
+    //        //    'is-closed': this.isOpen
+    //        //};
+    //    }            
+    //}
+});

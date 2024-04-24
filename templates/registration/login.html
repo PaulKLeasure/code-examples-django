@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+.login-form {
+    width: 340px;
+    margin: 50px auto;
+    font-size: 15px;
+}
+
+.login-form form {
+    margin-bottom: 15px;
+    background: #f7f7f7;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+}
+
+.login-form h2 {
+    margin: 0 0 15px;
+}
+
+.login-form a {
+    color:#007bff;
+}
+
+.login-form .resetLink {
+    font-weight:300;
+}
+
+.login-form .buttonContainerDiv {
+    margin-top:15px;
+}
+
+.login-form .firstTimeUserText {
+    margin-bottom:0px; 
+    font-weight:300; 
+    color:#888; 
+}
+
+.form-control, .btn {
+    min-height: 38px;
+    border-radius: 2px;
+}
+
+.btn {        
+    font-size: 15px;
+    font-weight: bold;
+}
+
+ul{
+    list-style-type:none;
+    padding-left:0;
+  }
+
+  ul li{
+    color:#ff0000;
+  }
+
+</style>
+<div class="container">
+    <div class="row mt-5">
+      <div class="col ">
+        <img class="float-md-left float-lg-left" style="height: 70px;" src="https://tradesites-assets.s3.amazonaws.com/images/{{ request.get_host }}--70OPT.jpg" alt="">
+      </div><!-- col -->
+      <div class="col">
+        <img class="float-md-right float-lg-right mt-2" style="height: 40px;" id="logo_wellborn" src="https://marvel-b1-cdn.bc0a.com/f00000000049597/s3.amazonaws.com/wellbornmedia/ivault/WellbornCMYK.png" alt="">
+      </div><!-- col -->
+    </div><!-- row -->
+    <div class="row">
+        <div class="login-form">
+            <form method="post">
+                <h2 class="text-center">Log in</h2>       
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                
+                  {% for hidden_field in form.hidden_fields %}
+                    {{ hidden_field.errors }}
+                    {{ hidden_field }}
+                  {% endfor %}
+                  
+                  {% for field in form.visible_fields %}
+                
+                    <div class="form-group">
+                        {% if field.name == 'password'  %}
+                          <lablel><strong>Password</strong></lablel>  <a class="resetLink" href="/accounts/password_reset/">(Reset Password)</a> <input class="form-control" id="{{ field.id_for_label }}" maxlength="128" name="{{ field.html_name }}" placeholder="{{ field.label }}" type="password" /> 
+                          {{ field.errors }}
+                        {% else %}
+                          <lablel><strong>Username</strong></lablel>
+                          <input class="form-control" id="{{ field.id_for_label }}" maxlength="128" name="{{ field.html_name }}" placeholder="{{ field.label }}" type="text" /> 
+                          {{ field.errors }}
+                        {%endif %}
+                    </div>
+                  {% endfor %}
+
+                 <div class="clearfix">
+                    <label class="float-left form-check-label"><input type="checkbox"> Remember me</label>
+                    <!-- Need to set up email on server for this 
+                        <a href="{% url 'password_reset' %}" class="float-right">Forgot Password?</a> -->
+                </div>       
+
+                <div class="form-group buttonContainerDiv" >
+                    <button type="submit" class="btn btn-primary btn-block">Log in</button>
+                </div>
+
+                <div class="form-group">
+                    <p class="firstTimeUserText" >First-time User?</p>
+                    <p><a href="/signup">Register Here</a></p>
+                </div>
+
+                
+            </form>
+        </div>
+    </div><!-- row -->
+    <div class="row mt-3">
+        <div class="col">
+            <img class="float-md-left float-lg-left" src="http://www.builders-way.com/images/remimages/58YearLogo_100px.jpg" alt="">
+        </div><!-- col -->
+        <div class="col">
+            <img class="float-md-right float-lg-right mt-2" src="http://www.builders-way.com/images/remimages/crafted.gif" alt="">
+        </div><!-- col -->
+    </div><!-- row -->    
+</div><!-- container -->
+
+{% endblock %}
