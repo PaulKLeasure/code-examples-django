@@ -1,7 +1,0 @@
-{% extends 'base.html' %}
-
-{% block content %}
-  <h2>Home page ({{ DOCKER_CONTAINER_ID }})</h2>
-  <p>Welcome to iVault2, {% if user.is_authenticated %}{{ user.username }}{% else %} visitor{% endif %}!</p>
-
-{% endblock %}

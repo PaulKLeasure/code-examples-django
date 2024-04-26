@@ -6,16 +6,16 @@
             "Effect": "Allow",
             "Principal": "*",
             "Action": "s3:GetObject",
-            "Resource": "arn:aws:s3:::ivault-api-media/*"
+            "Resource": "arn:aws:s3:::<bucket-name-removed>/*"
         },
         {
             "Sid": "ProgammaticAdminAccess",
             "Effect": "Allow",
             "Principal": {
-                "AWS": "arn:aws:iam::071316641278:user/pkl_ivaults3_01"
+                "AWS": "arn:aws:iam::071316641278:user/<name-removed>"
             },
             "Action": "*",
-            "Resource": "arn:aws:s3:::ivault-api-media/*"
+            "Resource": "arn:aws:s3:::<resource-removed>/*"
         }
     ]
 }
