@@ -1,10 +1,9 @@
-# code-examples
-Paul Leasure
+# Code examples of Django modules for an Asset Management API
 
 ### NOTES
-This repository contains some individual module files that were part of an Asset Management API. Select the modules from within the repository to view the code.
+This repository contains some individual module files that were part of an Asset Management API. This is not the complete application. Sensitive data has been removed. Select the modules from within the repository to view the code.
 
-## A few examples of Django modules for an Asset Management API
+## A few examples 
 
 __core:__  Provided the core CRUD functionality for assets, asset options, and option groups.
 
